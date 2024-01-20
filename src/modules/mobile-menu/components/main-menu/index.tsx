@@ -7,99 +7,7 @@ import { useCollections, useMeCustomer } from "medusa-react"
 import Link from "next/link"
 import ReactCountryFlag from "react-country-flag"
 import { Heading } from "@medusajs/ui"
-
-const MainMenu = () => {
-  const { collections } = useCollections()
-  const { customer } = useMeCustomer()
-  const { countryCode } = useStore()
-
-  const countries = useCountryOptions()
-
-  const {
-    close,
-    screen: [_, setScreen],
-  } = useMobileMenu()
-
-  const setScreenCountry = () => setScreen("country")
-  const setScreenSearch = () => setScreen("search")
-
-  return (
-    <div className="flex flex-col flex-1">
-      <div className="flex items-center justify-between w-full border-b border-gray-200 p-6">
-        <div className="flex-1 basis-0">
-          <button
-            className="flex items-center gap-x-2"
-            onClick={setScreenCountry}
-          >
-            <ReactCountryFlag countryCode={countryCode || "us"} svg />
-            <ChevronDown />
-          </button>
-        </div>
-
-        <Heading className="txt-compact-xlarge-plus text-ui-fg-subtle uppercase">
-          Medusa Store
-        </Heading>
-
-        <div className="flex-1 basis-0 flex justify-end">
-          <button onClick={close}>
-            <X />
-          </button>
-        </div>
-      </div>
-
-      <div className="space-y-6 flex-1 flex flex-col justify-between p-6">
-        {process.env.FEATURE_SEARCH_ENABLED && (
-          <button
-            className="bg-gray-50 flex items-center px-4 py-2 gap-x-2 text-ui-fg-muted rounded-rounded"
-            onClick={setScreenSearch}
-          >
-            <MagnifyingGlassMini />
-            <span placeholder="Search products" className="text-base-regular">
-              Search products
-            </span>
-          </button>
-        )}
-
-        <div className="flex flex-col flex-1 text-large-regular text-gray-900">
-          <ul className="flex flex-col gap-y-2">
-            <li className="bg-gray-50 p-4 rounded-rounded">
-              <Link href="/store">
-                <button
-                  className="flex items-center justify-between w-full"
-                  onClick={close}
-                >
-                  <span className="sr-only">Go to Store</span>
-                  <span>Store</span>
-                  <ChevronDown className="-rotate-90" />
-                </button>
-              </Link>
-            </li>
-            {collections ? (
-              <>
-                {collections.map((collection) => (
-                  <li
-                    key={collection.id}
-                    className="bg-gray-50 p-4 rounded-rounded"
-                  >
-                    <Link href={`/collections/${collection.handle}`}>
-                      <button
-                        className="flex items-center justify-between w-full"
-                        onClick={close}
-                      >
-                        <span className="sr-only">
-                          Go to {collection.title} collection
-                        </span>
-                        <span>{collection.title}</span>
-                        <ChevronDown className="-rotate-90" />
-                      </button>
-                    </Link>
-                  </li>
-                ))}
-              </>
-            ) : null}
-          </ul>
-        </div>
-
+/*
         <div className="flex flex-col">
           <div className="flex flex-col gap-y-8 text-small-regular">
             {!customer ? (
@@ -152,6 +60,83 @@ const MainMenu = () => {
             </div>
           </div>
         </div>
+*/
+const MainMenu = () => {
+  const { collections } = useCollections()
+  const { customer } = useMeCustomer()
+  const { countryCode } = useStore()
+
+  const countries = useCountryOptions()
+
+  const {
+    close,
+    screen: [_, setScreen],
+  } = useMobileMenu()
+
+ // const setScreenCountry = () => setScreen("country")
+  // const setScreenSearch = () => setScreen("search");
+  return (
+    <div className="flex flex-col flex-1">
+      <div className="flex items-center justify-between w-full border-b border-gray-200 p-6">
+        <div className="flex-1 basis-0">
+            <ReactCountryFlag sizes="2xl" countryCode={"dz"} svg />
+        </div>
+
+        <Heading className="txt-compact-xlarge-plus text-ui-fg-subtle uppercase">
+          MY STORE
+        </Heading>
+
+        <div className="flex-1 basis-0 flex justify-end">
+          <button onClick={close}>
+            <X />
+          </button>
+        </div>
+      </div>
+
+      <div className="space-y-6 flex-1 flex flex-col justify-between p-6">
+
+
+        <div className="flex flex-col flex-1 text-large-regular text-gray-900">
+          <ul className="flex flex-col gap-y-2">
+            <li className="bg-gray-50 p-4 rounded-rounded">
+              <Link href="/">
+                <button
+                  className="flex items-center justify-between w-full"
+                  onClick={close}
+                >
+                  <span className="sr-only">تفقد المتجر</span>
+                  <span>تفقد المتجر</span>
+                  <ChevronDown className="-rotate-90" />
+                </button>
+              </Link>
+            </li>
+            {collections ? (
+              <>
+                {collections.map((collection) => (
+                  <li
+                    key={collection.id}
+                    className="bg-gray-50 p-4 rounded-rounded"
+                  >
+                    <Link href={`/collections/${collection.handle}`}>
+                      <button
+                        className="flex items-center justify-between w-full"
+                        onClick={close}
+                      >
+                        <span className="sr-only">
+                          تفقد {collection.title}
+                        </span>
+                        <span>تفقد {collection.title}</span>
+                        <ChevronDown className="-rotate-90" />
+                      </button>
+                    </Link>
+                  </li>
+                ))}
+              </>
+            ) : null}
+          </ul>
+        </div>
+
+
       </div>
     </div>
   )

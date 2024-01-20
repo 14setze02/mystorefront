@@ -72,7 +72,7 @@ const NativeSelect = forwardRef<HTMLSelectElement, NativeSelectProps>(
             </option>
             {children}
           </select>
-          <span className="absolute right-4 inset-y-0 flex items-center pointer-events-none ">
+          <span className="absolute left-4 inset-y-0 flex items-center pointer-events-none ">
             <ChevronUpDown />
           </span>
         </div>

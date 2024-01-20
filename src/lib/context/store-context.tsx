@@ -29,7 +29,8 @@ interface StoreContext {
   addItem: (item: VariantInfoProps) => void
   updateItem: (item: LineInfoProps) => void
   deleteItem: (lineId: string) => void
-  resetCart: () => void
+  resetCart: () => void, 
+  createNewCart : (regionId: string) => void
 }
 
 const StoreContext = React.createContext<StoreContext | null>(null)
@@ -101,9 +102,17 @@ export const StoreProvider = ({ children }: StoreProps) => {
   }
 
   const setRegion = async (regionId: string, countryCode: string) => {
+    /*updateCart.mutate({
+      discounts: [
+        {
+          code : "BESSA**",
+        },
+      ],
+    })*/
+  
     await updateCart.mutateAsync(
       {
-        region_id: regionId,
+        region_id: regionId
       },
       {
         onSuccess: ({ cart }) => {
@@ -164,8 +173,9 @@ export const StoreProvider = ({ children }: StoreProps) => {
   }
 
   const createNewCart = async (regionId?: string) => {
+    
     await createCart.mutateAsync(
-      { region_id: regionId },
+      { region_id: regionId  },
       {
         onSuccess: ({ cart }) => {
           setCart(cart)
@@ -189,12 +199,13 @@ export const StoreProvider = ({ children }: StoreProps) => {
     createCart.mutate(
       {
         region_id: savedRegion?.regionId,
-      },
+      },      
       {
         onSuccess: ({ cart }) => {
           setCart(cart)
           storeCart(cart.id)
-          ensureRegion(cart.region, cart.shipping_address?.country_code)
+          ensureRegion(cart.region, cart.shipping_address?.country_code);
+
         },
         onError: (error) => {
           if (process.env.NODE_ENV === "development") {
@@ -256,7 +267,7 @@ export const StoreProvider = ({ children }: StoreProps) => {
         onSuccess: ({ cart }) => {
           setCart(cart)
           storeCart(cart.id)
-          timedOpen()
+          //timedOpen()
         },
         onError: (error) => {
           handleError(error)
@@ -314,7 +325,7 @@ export const StoreProvider = ({ children }: StoreProps) => {
         addItem,
         deleteItem,
         updateItem,
-        resetCart,
+        resetCart, createNewCart
       }}
     >
       {children}

@@ -53,7 +53,7 @@ const CountrySelect = ({ toggleState }: CountrySelectProps) => {
   return (
     <div>
       <Listbox
-        onChange={handleChange}
+       
         defaultValue={
           countryCode
             ? options?.find((o) => o.country === countryCode)
@@ -62,7 +62,7 @@ const CountrySelect = ({ toggleState }: CountrySelectProps) => {
       >
         <Listbox.Button className="py-1 w-full">
           <div className="txt-compact-small flex items-start gap-x-2">
-            <span>Shipping to:</span>
+            <span>التوصيل داخل:</span>
             {current && (
               <span className="txt-compact-small flex items-center gap-x-2">
                 <ReactCountryFlag

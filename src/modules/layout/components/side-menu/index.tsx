@@ -29,7 +29,7 @@ const SideMenu = ({ searchModalOpen }: { searchModalOpen: () => void }) => {
             <>
               <div className="relative flex h-full">
                 <Popover.Button className="relative h-full flex items-center transition-all ease-out duration-200 focus:outline-none hover:text-ui-fg-base">
-                  Menu
+                القائمة
                 </Popover.Button>
               </div>
 
@@ -95,7 +95,7 @@ const SideMenu = ({ searchModalOpen }: { searchModalOpen: () => void }) => {
                         />
                       </div>
                       <Text className="flex justify-between txt-compact-small">
-                        © {new Date().getFullYear()} Medusa Store. All rights
+                        © {new Date().getFullYear()} {process.env.STORE_TITLE}. All rights
                         reserved.
                       </Text>
                     </div>

@@ -375,11 +375,11 @@ export const CheckoutProvider = ({ children }: CheckoutProviderProps) => {
 export const useCheckout = () => {
   const context = useContext(CheckoutContext)
   const form = useFormContext<CheckoutFormValues>()
-  if (context === null) {
+ /* if (context === null) {
     throw new Error(
       "useProductActionContext must be used within a ProductActionProvider"
     )
-  }
+  }*/
   return { ...context, ...form }
 }
 
@@ -436,6 +436,7 @@ const mapFormValues = (
       phone:
         cart?.shipping_address?.phone || customerShippingAddress?.phone || "",
     },
+    
     billing_address: {
       first_name:
         cart?.billing_address?.first_name ||

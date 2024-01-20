@@ -68,6 +68,7 @@ module.exports = {
           "Ubuntu",
           "sans-serif",
         ],
+        display : "https://fonts.googleapis.com/css?family=Noto Naskh Arabic",
       },
       keyframes: {
         ring: {

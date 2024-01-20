@@ -6,6 +6,8 @@ import CheckoutLoader from "../components/checkout-loader"
 import CheckoutForm from "./checkout-form"
 import CheckoutSummary from "./checkout-summary"
 import SubmitSpinner from "../components/submit-spinner"
+import Medusa from "@medusajs/medusa-js"
+
 
 const CheckoutTemplate = () => {
   return (

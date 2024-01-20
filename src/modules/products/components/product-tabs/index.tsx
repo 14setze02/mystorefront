@@ -16,29 +16,30 @@ const ProductTabs = ({ product }: ProductTabsProps) => {
   const tabs = useMemo(() => {
     return [
       {
-        label: "Product Information",
+        label: "معلومات عن المنتج",
         component: <ProductInfoTab product={product} />,
       },
       {
-        label: "Shipping & Returns",
-        component: <ShippingInfoTab />,
-      },
+        label: "التوصيل والإسترجاع",
+        component: <ShippingInfoTab  />,
+      }
     ]
   }, [product])
 
   return (
     <div className="w-full">
-      <Accordion type="multiple">
+      <Accordion type="multiple" defaultValue={['0','1']} >
         {tabs.map((tab, i) => (
           <Accordion.Item
             key={i}
             title={tab.label}
             headingSize="medium"
-            value={tab.label}
+            value={i?.toString()}
           >
             {tab.component}
           </Accordion.Item>
         ))}
+        
       </Accordion>
     </div>
   )
@@ -50,28 +51,30 @@ const ProductInfoTab = ({ product }: ProductTabsProps) => {
       <div className="grid grid-cols-2 gap-x-8">
         <div className="flex flex-col gap-y-4">
           <div>
-            <span className="font-semibold">Material</span>
+            <span className="font-semibold text-blue-500">مصنوع من</span>
             <p>{product.material ? product.material : "-"}</p>
           </div>
           <div>
-            <span className="font-semibold">Country of origin</span>
+            <span className="font-semibold text-blue-500">البلد المصنع</span>
             <p>{product.origin_country ? product.origin_country : "-"}</p>
           </div>
           <div>
-            <span className="font-semibold">Type</span>
+            <span className="font-semibold text-blue-500">النوع</span>
             <p>{product.type ? product.type.value : "-"}</p>
           </div>
         </div>
         <div className="flex flex-col gap-y-4">
           <div>
-            <span className="font-semibold">Weight</span>
-            <p>{product.weight ? `${product.weight} g` : "-"}</p>
+            <span className="font-semibold text-blue-500">الوزن</span>
+            <p>{product.weight ? `${product.weight} غ` : "-"}</p>
           </div>
           <div>
-            <span className="font-semibold">Dimensions</span>
-            <p>
+            <span className="font-semibold text-blue-500">القياسات</span>
+            <p >
               {product.length && product.width && product.height
-                ? `${product.length}L x ${product.width}W x ${product.height}H`
+                ? `الطول${ product.length} x العرض${product.width} x الإرتفاع${product.height}`
+                :  product.length && product.width ?
+                 `الطول${product.length} x العرض${product.width} `
                 : "-"}
             </p>
           </div>
@@ -93,31 +96,27 @@ const ShippingInfoTab = () => {
         <div className="flex items-start gap-x-2">
           <FastDelivery />
           <div>
-            <span className="font-semibold">Fast delivery</span>
+            <span className="font-semibold text-blue-500">توصيل سريع</span>
             <p className="max-w-sm">
-              Your package will arrive in 3-5 business days at your pick up
-              location or in the comfort of your home.
+            سيصل طردك من يوم واحد إلى 3 أيام إلى مكتب شركة التوصيل أو إلى منزلك.
             </p>
           </div>
         </div>
         <div className="flex items-start gap-x-2">
           <Refresh />
           <div>
-            <span className="font-semibold">Simple exchanges</span>
+            <span className="font-semibold text-blue-500">تبادلات بسيطة</span>
             <p className="max-w-sm">
-              Is the fit not quite right? No worries - we&apos;ll exchange your
-              product for a new one.
+            هل المقياس ليس مناسبًا تمامًا؟ لا تقلق - سنقوم بتبديل منتجك بواحد جديد
             </p>
           </div>
         </div>
         <div className="flex items-start gap-x-2">
           <Back />
           <div>
-            <span className="font-semibold">Easy returns</span>
+            <span className="font-semibold text-blue-500">إسترجاع سهل</span>
             <p className="max-w-sm">
-              Just return your product and we&apos;ll refund your money. No
-              questions asked – we&apos;ll do our best to make sure your return
-              is hassle-free.
+            قم بإرجاع منتجك فقط وسنقوم بإعادة مبلغك. بدون أي أسئلة - سنبذل قصارى جهدنا لضمان عملية الإرجاع بدون عناء.
             </p>
           </div>
         </div>

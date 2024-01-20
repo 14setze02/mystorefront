@@ -3,6 +3,7 @@ import {
   useProductActions,
 } from "@lib/context/product-context"
 import useProductPrice from "@lib/hooks/use-product-price"
+
 import { PricedProduct } from "@medusajs/medusa/dist/types/pricing"
 import { Button } from "@medusajs/ui"
 import Divider from "@modules/common/components/divider"
@@ -11,18 +12,18 @@ import clsx from "clsx"
 import React, { useMemo } from "react"
 
 type ProductActionsProps = {
-  product: PricedProduct
+  product: PricedProduct,
+  setVariant : React.Dispatch<React.SetStateAction<string>>
 }
 
-const ProductActionsInner: React.FC<ProductActionsProps> = ({ product }) => {
+const ProductActionsInner: React.FC<ProductActionsProps> = ({ product,setVariant }) => {
   const { updateOptions, addToCart, options, inStock, variant } =
-    useProductActions()
+    useProductActions();
 
   const price = useProductPrice({ id: product.id!, variantId: variant?.id })
 
   const selectedPrice = useMemo(() => {
-    const { variantPrice, cheapestPrice } = price
-
+    const { variantPrice, cheapestPrice } = price;
     return variantPrice || cheapestPrice || null
   }, [price])
 
@@ -39,6 +40,7 @@ const ProductActionsInner: React.FC<ProductActionsProps> = ({ product }) => {
                     current={options[option.id]}
                     updateOption={updateOptions}
                     title={option.title}
+                    setVariant = {setVariant}
                   />
                 </div>
               )
@@ -47,25 +49,25 @@ const ProductActionsInner: React.FC<ProductActionsProps> = ({ product }) => {
           </div>
         )}
       </div>
-
       {selectedPrice ? (
         <div className="flex flex-col text-ui-fg-base">
           <span
             className={clsx("text-xl-semi", {
-              "text-ui-fg-interactive": selectedPrice.price_type === "sale",
+              "text-ui-fg-interactive ": selectedPrice.price_type === "sale",
             })}
+            
           >
-            {selectedPrice.calculated_price}
+            {selectedPrice.calculated_price?.replace('DZD',' د.ج')}
           </span>
           {selectedPrice.price_type === "sale" && (
             <>
               <p>
-                <span className="text-ui-fg-subtle">Original: </span>
+                <span className="text-ui-fg-subtle">السعر الأصلي: </span>
                 <span className="line-through">
-                  {selectedPrice.original_price}
+                  {selectedPrice.original_price?.replace('DZD','د.ج ')}
                 </span>
               </p>
-              <span className="text-ui-fg-interactive">
+              <span className="text-ui-fg-interactive font-bold">
                 -{selectedPrice.percentage_diff}%
               </span>
             </>
@@ -75,25 +77,14 @@ const ProductActionsInner: React.FC<ProductActionsProps> = ({ product }) => {
         <div></div>
       )}
 
-      <Button
-        onClick={addToCart}
-        disabled={!inStock || !variant}
-        variant="primary"
-        className="w-full h-10"
-      >
-        {!inStock
-          ? "Out of stock"
-          : !variant
-          ? "Select variant"
-          : "Add to cart"}
-      </Button>
+
     </div>
   )
 }
 
-const ProductActions: React.FC<ProductActionsProps> = ({ product }) => (
+const ProductActions: React.FC<ProductActionsProps> = ({ product, setVariant }) => (
   <ProductProvider product={product}>
-    <ProductActionsInner product={product} />
+    <ProductActionsInner product={product} setVariant={setVariant} />
   </ProductProvider>
 )
 

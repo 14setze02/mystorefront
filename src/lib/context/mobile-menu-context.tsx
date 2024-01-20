@@ -46,7 +46,7 @@ export const MobileMenuProvider = ({
   }, [close])
 
   useEffect(() => {
-    if (state && debouncedWith >= 1024) {
+    if (state && debouncedWith >= 4048) {
       closeMenu()
     }
   }, [debouncedWith, state, closeMenu])
