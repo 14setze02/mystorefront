@@ -30,7 +30,7 @@ export default function Swips(props) {
           {
             props?.images?.map((image, index) => {
               return (
-                <SwiperSlide>
+                <SwiperSlide key={index} >
                   <Container
                     key={image.id}
                     className="relative aspect-[29/34] w-full overflow-hidden bg-ui-bg-subtle"
