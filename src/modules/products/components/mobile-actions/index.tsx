@@ -133,8 +133,10 @@ const MobileActions: React.FC<MobileActionsProps> = ({ product, show }) => {
                                 option={option}
                                 current={options[option.id]}
                                 updateOption={updateOptions}
-                                title={option.title}
-                              />
+                                title={option.title} 
+                                setVariant={function (value: React.SetStateAction<string>): void {
+                                  throw new Error("Function not implemented.")
+                                } }                              />
                             </div>
                           )
                         })}

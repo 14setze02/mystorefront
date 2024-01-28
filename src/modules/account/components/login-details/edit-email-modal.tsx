@@ -38,11 +38,11 @@ const EditEmailModal: React.FC<EditEmailModalProps> = ({ customer }) => {
 
   const { refetchCustomer } = useAccount()
 
-  const submit = handleSubmit((data) => {
+  const submit = handleSubmit((data  : any) => {
     setSubmitting(true)
     setError(undefined)
 
-    if (data.email === customer.email) {
+    if (data !== undefined && data?.email === customer.email) {
       setSubmitting(false)
       setError("You must enter a new email.")
       return

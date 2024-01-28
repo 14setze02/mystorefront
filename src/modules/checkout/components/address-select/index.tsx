@@ -19,10 +19,10 @@ const AddressSelect = ({ addresses }: AddressSelectProps) => {
   const { control, setSavedAddress } = useCheckout()
 
   const handleSelect = (id: string) => {
-    const savedAddress = addresses.find((a) => a.id === id)
+    const savedAddress = addresses?.find((a) => a?.id === id) ;
 
     if (savedAddress) {
-      setSavedAddress(savedAddress)
+      setSavedAddress?.(savedAddress)
     }
 
     setSelected(id)

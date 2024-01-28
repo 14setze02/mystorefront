@@ -4,10 +4,10 @@ import useToggleState from "@lib/hooks/use-toggle-state"
 import { createContext, useContext, useEffect, useState } from "react"
 
 interface CartDropdownContext {
-  state: boolean
-  open: () => void
-  timedOpen: () => void
-  close: () => void
+  state: boolean | undefined
+  open: () => void | undefined
+  timedOpen: () => void | undefined
+  close: () => void | undefined
 }
 
 export const CartDropdownContext = createContext<CartDropdownContext | null>(
@@ -25,9 +25,9 @@ export const CartDropdownProvider = ({
   )
 
   const timedOpen = () => {
-    open()
+    open?.()
 
-    const timer = setTimeout(close, 5000)
+    const timer = setTimeout(close!, 5000)
 
     setActiveTimer(timer)
   }
@@ -37,7 +37,7 @@ export const CartDropdownProvider = ({
       clearTimeout(activeTimer)
     }
 
-    open()
+    open?.()
   }
 
   // Clean up the timer when the component unmounts
@@ -51,7 +51,7 @@ export const CartDropdownProvider = ({
 
   return (
     <CartDropdownContext.Provider
-      value={{ state, close, open: openAndCancel, timedOpen }}
+      value={{ state , close, open: openAndCancel, timedOpen }}
     >
       {children}
     </CartDropdownContext.Provider>

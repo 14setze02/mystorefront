@@ -6,21 +6,22 @@ import BillingAddress from "../billing_address"
 import ShippingAddress from "../shipping-address"
 import Divider from "@modules/common/components/divider"
 
+
 const Addresses = () => {
   const {
-    sameAsBilling: { state: checked, toggle: onChange },
-    editAddresses: { state: isOpen, open },
-    editShipping: { close: closeShipping },
-    editPayment: { close: closePayment },
+    sameAsBilling: { state: checked, toggle: onChange } = {},
+    editAddresses: { state: isOpen, open } = {},
+    editShipping: { close: closeShipping } = {},
+    editPayment: { close: closePayment } = {},
     setAddresses,
     handleSubmit,
     cart,
   } = useCheckout()
 
   const handleEdit = () => {
-    open()
-    closeShipping()
-    closePayment()
+    open?.()
+    closeShipping?.()
+    closePayment?.()
   }
 
   return (
@@ -61,7 +62,7 @@ const Addresses = () => {
           <Button
             size="large"
             className="mt-6"
-            onClick={handleSubmit(setAddresses)}
+            onClick={handleSubmit?.(setAddresses!)}
           >
             Continue to delivery
           </Button>
