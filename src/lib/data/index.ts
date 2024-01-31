@@ -177,7 +177,7 @@ export async function getCollectionByHandle(handle: string): Promise<{
   response: { products: Product[]; count: number }
   nextPage: number
 }> {
-  if (true) {
+  if (MEDUSA_V2_ENABLED) {
     const data = await fetch(`${API_BASE_URL}/api/collections/${handle}`)
       .then((res) => res.json())
       .catch((err) => {

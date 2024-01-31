@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+export const fetchCache = "force-no-store";
 const MEDUSA_API_KEY = process.env.NEXT_PUBLIC_MEDUSA_API_KEY || ""
 const REVALIDATE_WINDOW = process.env.REVALIDATE_WINDOW || 60 * 30 // 30 minutes
 const ENDPOINT =
