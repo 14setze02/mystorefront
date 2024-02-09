@@ -5,7 +5,7 @@ module.exports = withStoreConfig({
   experimental: {
     serverComponentsExternalPackages: [
       "@medusajs/product",
-      "@medusajs/modules-sdk",
+      "@medusajs/modules-sdk"
     ],
   },
   features: store.features,
