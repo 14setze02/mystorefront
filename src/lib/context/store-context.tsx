@@ -117,7 +117,7 @@ export const StoreProvider = ({ children }: StoreProps) => {
       {
         onSuccess: ({ cart }) => {
           setCart(cart)
-          storeCart(cart.id)
+          storeCart(cart?.id)
           storeRegion(regionId, countryCode)
         },
         onError: (error) => {
@@ -132,17 +132,17 @@ export const StoreProvider = ({ children }: StoreProps) => {
   const ensureRegion = (region: Region, countryCode?: string | null) => {
     if (!IS_SERVER) {
       const { regionId, countryCode: defaultCountryCode } = getRegion() || {
-        regionId: region.id,
-        countryCode: region.countries[0].iso_2,
+        regionId: region?.id,
+        countryCode: region?.countries[0].iso_2,
       }
 
       const finalCountryCode = countryCode || defaultCountryCode
 
-      if (regionId !== region.id) {
-        setRegion(region.id, finalCountryCode)
+      if (regionId !== region?.id) {
+        setRegion(region?.id, finalCountryCode)
       }
 
-      storeRegion(region.id, finalCountryCode)
+      storeRegion(region?.id, finalCountryCode)
       setCountryCode(finalCountryCode)
     }
   }
@@ -179,8 +179,8 @@ export const StoreProvider = ({ children }: StoreProps) => {
       {
         onSuccess: ({ cart }) => {
           setCart(cart)
-          storeCart(cart.id)
-          ensureRegion(cart.region, cart.shipping_address?.country_code)
+          storeCart(cart?.id)
+          ensureRegion(cart?.region, cart?.shipping_address?.country_code)
         },
         onError: (error) => {
           if (process.env.NODE_ENV === "development") {
@@ -203,7 +203,7 @@ export const StoreProvider = ({ children }: StoreProps) => {
       {
         onSuccess: ({ cart }) => {
           setCart(cart)
-          storeCart(cart.id)
+          storeCart(cart?.id)
           ensureRegion(cart.region, cart.shipping_address?.country_code);
 
         },
@@ -266,7 +266,7 @@ export const StoreProvider = ({ children }: StoreProps) => {
       {
         onSuccess: ({ cart }) => {
           setCart(cart)
-          storeCart(cart.id)
+          storeCart(cart?.id)
           //timedOpen()
         },
         onError: (error) => {
@@ -284,7 +284,7 @@ export const StoreProvider = ({ children }: StoreProps) => {
       {
         onSuccess: ({ cart }) => {
           setCart(cart)
-          storeCart(cart.id)
+          storeCart(cart?.id)
         },
         onError: (error) => {
           handleError(error)
@@ -308,7 +308,7 @@ export const StoreProvider = ({ children }: StoreProps) => {
       {
         onSuccess: ({ cart }) => {
           setCart(cart)
-          storeCart(cart.id)
+          storeCart(cart?.id)
         },
         onError: (error) => {
           handleError(error)
