@@ -1,7 +1,7 @@
-import { getCollectionsList } from "@lib/data"
-import FeaturedProducts from "@modules/home/components/featured-products"
-import Hero from "@modules/home/components/hero"
-import SkeletonHomepageProducts from "@modules/skeletons/components/skeleton-homepage-products"
+import { getCollectionsList } from "../../lib/data"
+import FeaturedProducts from "../../modules/home/components/featured-products"
+import Hero from "../../modules/home/components/hero"
+import SkeletonHomepageProducts from "../../modules/skeletons/components/skeleton-homepage-products"
 import { Metadata } from "next"
 import { Suspense } from "react"
 export const dynamic = "force-dynamic";

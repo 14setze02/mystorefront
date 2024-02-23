@@ -5,7 +5,7 @@ import { initialize as initializeProductModule } from "@medusajs/product"
 import { MedusaApp, Modules } from "@medusajs/modules-sdk"
 import { ProductCollectionDTO, ProductDTO } from "@medusajs/types/dist/product"
 import { IPricingModuleService } from "@medusajs/types"
-import { getPricesByPriceSetId } from "@lib/util/get-prices-by-price-set-id"
+import { getPricesByPriceSetId } from "../../../../lib/util/get-prices-by-price-set-id"
 
 /**
  * This endpoint uses the serverless Product Module to retrieve a collection and its products by handle.

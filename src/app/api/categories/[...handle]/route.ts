@@ -4,7 +4,7 @@ import { ProductDTO } from "@medusajs/types/dist/product"
 import { IPricingModuleService } from "@medusajs/types"
 import { notFound } from "next/navigation"
 import { MedusaApp, Modules } from "@medusajs/modules-sdk"
-import { getPricesByPriceSetId } from "@lib/util/get-prices-by-price-set-id"
+import { getPricesByPriceSetId } from "../../../../lib/util/get-prices-by-price-set-id"
 
 /**
  * This endpoint uses the serverless Product and Pricing Modules to retrieve a category and its products by handle.

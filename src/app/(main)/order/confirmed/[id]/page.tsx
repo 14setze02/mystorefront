@@ -1,5 +1,5 @@
-import medusaRequest from "@lib/medusa-fetch"
-import OrderCompletedTemplate from "@modules/order/templates/order-completed-template"
+import medusaRequest from "../../../../../lib/medusa-fetch"
+import OrderCompletedTemplate from "../../../../../modules/order/templates/order-completed-template"
 import { Metadata } from "next"
 
 type Props = {

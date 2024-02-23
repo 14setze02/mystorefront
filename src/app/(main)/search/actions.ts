@@ -1,6 +1,6 @@
 "use server"
 
-import { searchClient, SEARCH_INDEX_NAME } from "@lib/search-client"
+import { searchClient, SEARCH_INDEX_NAME } from "../../../lib/search-client"
 
 /**
  * Uses Algolia to search for a query

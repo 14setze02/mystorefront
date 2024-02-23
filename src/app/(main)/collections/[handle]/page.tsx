@@ -1,5 +1,5 @@
-import { getCollectionByHandle } from "@lib/data"
-import CollectionTemplate from "@modules/collections/templates"
+import { getCollectionByHandle } from "../../../../lib/data"
+import CollectionTemplate from "../../../../modules/collections/templates"
 import { Metadata } from "next"
 import { notFound } from "next/navigation"
 

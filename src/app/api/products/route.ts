@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server"
 import { notFound } from "next/navigation"
 
 import { MedusaApp, Modules } from "@medusajs/modules-sdk"
-import { getPricesByPriceSetId } from "@lib/util/get-prices-by-price-set-id"
+import { getPricesByPriceSetId } from "../../../lib/util/get-prices-by-price-set-id"
 import { IPricingModuleService } from "@medusajs/types"
 
 /**

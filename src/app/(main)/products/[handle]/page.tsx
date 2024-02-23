@@ -1,6 +1,6 @@
-import { getProductByHandle } from "@lib/data"
-import ProductTemplate from "@modules/products/templates"
-import SkeletonProductPage from "@modules/skeletons/templates/skeleton-product-page"
+import { getProductByHandle } from "../../../../lib/data"
+import ProductTemplate from "../../../../modules/products/templates"
+import SkeletonProductPage from "../../../../modules/skeletons/templates/skeleton-product-page"
 import { Metadata } from "next"
 import { notFound } from "next/navigation"
 

@@ -1,5 +1,5 @@
-import medusaRequest from "@lib/medusa-fetch"
-import OrderDetailsTemplate from "@modules/order/templates/order-details-template"
+import medusaRequest from "../../../../../lib/medusa-fetch"
+import OrderDetailsTemplate from "../../../../../modules/order/templates/order-details-template"
 
 import { Metadata } from "next"
 

@@ -1,5 +1,5 @@
-import { getCategoryByHandle } from "@lib/data"
-import CategoryTemplate from "@modules/categories/templates"
+import { getCategoryByHandle } from "../../../lib/data"
+import CategoryTemplate from "../../../modules/categories/templates"
 import { Metadata } from "next"
 import { notFound } from "next/navigation"
 
