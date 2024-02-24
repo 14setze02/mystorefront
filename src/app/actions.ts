@@ -2,7 +2,7 @@
 
 import { revalidateTag } from "next/cache"
 
-/** 
+/**
  * Revalidates each cache tag in the passed array
  * @param {string[]} tags - array of tags to revalidate
  */
