@@ -7,7 +7,6 @@ module.exports = withStoreConfig({
       "@medusajs/product",
       "@medusajs/modules-sdk"
     ],
-      serverActions: true,
   },
   features: store.features,
   reactStrictMode: true,
