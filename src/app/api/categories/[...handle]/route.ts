@@ -41,6 +41,11 @@ export async function GET(
       }
     )
     .catch((e) => {
+      if (e.cause instanceof AggregateError) {
+        console.error(e.cause.errors)
+      } else {
+        console.error(e)
+      }
       return notFound()
     })
 
