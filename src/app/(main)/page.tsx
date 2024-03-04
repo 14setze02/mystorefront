@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   description:
     "A performant frontend ecommerce build by Setze Softwares.",
 }
-
+export const runtime = "edge"
 export default async function Home() {
   // const { collections, count } = await getCollectionsList(0, 3)
 
